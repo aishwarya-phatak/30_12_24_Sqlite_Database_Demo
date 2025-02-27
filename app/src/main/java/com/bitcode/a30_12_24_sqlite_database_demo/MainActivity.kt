@@ -13,13 +13,39 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         var dbUtil= DBUtil(this)
-        dbUtil.insertProduct(11,"Mixer",1002)
-        dbUtil.insertProduct(12,"Tshirt", 342)
 
-        for (i in 13..16){
-            dbUtil.insertProduct(i,"Product " + i, i * 100 + 500)
+//        dbUtil.insertProduct(11,"Mixer",1002)
+//        dbUtil.insertProduct(12,"Tshirt", 342)
+//
+//        for (i in 13..16){
+//            dbUtil.insertProduct(i,"Product " + i, i * 100 + 500)
+//        }
+
+        Log.e("tag","-----------GetAllProducts----------")
+        for (eachProduct in dbUtil.getAllProducts()){
+            Log.e("tag","eachproduct" + eachProduct.title)
         }
 
+        Log.e("tag","-----------Delete A Product----------")
+
+        dbUtil.deleteProduct(13)
+
+        Log.e("tag","-----------GetAllProducts----------")
+        for (eachProduct in dbUtil.getAllProducts()){
+            Log.e("tag","eachproduct" + eachProduct.title)
+        }
+
+        dbUtil.deleteProduct(11)
+
+        Log.e("tag","-----------GetAllProducts----------")
+        for (eachProduct in dbUtil.getAllProducts()){
+            Log.e("tag","eachproduct" + eachProduct.title)
+        }
+
+        Log.e("tag","-----------Update A Product----------")
+        dbUtil.updateProduct(12,"iPhone",100000)
+
+        Log.e("tag","-----------GetAllProducts----------")
         for (eachProduct in dbUtil.getAllProducts()){
             Log.e("tag","eachproduct" + eachProduct.title)
         }
